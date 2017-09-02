@@ -6,6 +6,11 @@ import graphqlHTTP from 'express-graphql';
 
 const app = express();
 
+mongoose.connect('mongodb://slam24:slam24@ds121674.mlab.com:21674/graphqlapi');
+const db = mongoose.connection;
+db.on('error',() => console.log('Failed to connect to database'))
+	.once('open', () => console.log('Connected to DB'))
+
 app.get('/', (req, res) => {
 	res.send('Hello world, this is graphql api.');
 });

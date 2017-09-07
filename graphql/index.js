@@ -1,9 +1,17 @@
-import { userType, userInputType } from './user';
-import { postType, postInputType } from './post';
+import {
+	GraphQLObjectType,
+	GraphQLSchema
+} from 'graphql';
+import mutations from './mutations';
+import queries from './queries';
 
-export default{
-	userType,
-	userInputType,
-	postType,
-	postInputType
-}
+export default new GraphQLSchema({
+	query: new GraphQLObjectType({
+		name: 'Query',
+		fields: queries
+	}),
+	mutation: new GraphQLObjectType({
+		name: 'Mutation',
+		fields: mutations
+	})
+});

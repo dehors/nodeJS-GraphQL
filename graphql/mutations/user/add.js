@@ -1,5 +1,5 @@
 import {
-	GraphQLNonNull
+	GraphQLNonNull,
 } from 'graphql';
 
 import { userType, userInputType } from '../../types/user';
@@ -8,17 +8,17 @@ import UserModel from '../../../models/user';
 export default {
 	type: userType,
 	args: {
-		data:{
+		data: {
 			name: 'data',
 			type: new GraphQLNonNull(userInputType)
 		}
 	},
-	resolve(root, params){
+	resolve(root, params) {
 		const uModel = new UserModel(params.data);
-		const newUser uModel.save();
+		const newUser = uModel.save();
 		if (!newUser) {
 			throw new Error('Error adding user');
 		}
-		return newUser;
+		return newUser
 	}
 }

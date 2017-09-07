@@ -1,0 +1,61 @@
+mutation{
+	addUser(data:{
+		email:"example@gmail.com",
+		name: "John Doe"
+		}) {
+		_id
+		email
+		name
+	}
+}
+--------------------------------------------------
+mutation{
+	updateUser(
+		id: "59b1289f683e500f1c5943db",
+		data:{
+			email:"examples@gmail.com",
+			name: "John"
+			}) {
+		_id
+		email
+		name
+	}
+}
+-------------------------------------------------
+mutation{
+	removeUser(
+		id: "59b1289f683e500f1c5943db"
+		) {
+		_id
+		email
+		name
+	}
+}
+------------------------------------------------
+query{
+  User(id: "59b1318b94176b1f54be61db") {
+    _id
+    email
+    name
+  }
+}
+----------------------------------------------
+query{
+  Users {
+    _id
+    email
+    name
+    posts {
+      _id
+      uid
+      title
+      body
+    }
+  }
+}
+
+
+
+
+
+
